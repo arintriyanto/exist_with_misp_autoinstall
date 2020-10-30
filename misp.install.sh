@@ -139,7 +139,7 @@ echo "extension=ssdeep.so" |sudo tee /etc/opt/rh/rh-php72/php.d/99-ssdeep.ini
 
 
 # If you have not yet set a timezone in php.ini
-echo 'date.timezone = "Europe/London"' | tee /etc/opt/rh/rh-php56/php-fpm.d/timezone.ini
+echo 'date.timezone = "Asia/Jakarta"' | tee /etc/opt/rh/rh-php56/php-fpm.d/timezone.ini
 ln -s ../php-fpm.d/timezone.ini /etc/opt/rh/rh-php56/php.d/99-timezone.ini
 
 # Recommended: Change some PHP settings in /etc/opt/rh/rh-php56/php.ini

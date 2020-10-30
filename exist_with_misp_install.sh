@@ -17,9 +17,6 @@ sed -i -e "s/rh-php56/rh-php72/g" misp.variables.sh
 sed -i -e "s/rh-php56/rh-php72/g" misp.install.sh
 sed -i -e "s/yum install python-importlib/##yum install python-importlib/g" misp.install.sh
 
-# Change the timezone (Europe/London -> Asia/Tokyo)
-sed -i -e "s/Asia\/Jakarta/Asia\/Tokyo/g" misp.install.sh
-
 # Set the DB Charset
 CHANGE_DB_CHARSET_TO_UTF8='sed -i -e "$(grep \\\\[mysqld\\\\] -n /etc/my.cnf.d/server.cnf | cut -d : -f 1)a character-set-server=utf8" /etc/my.cnf.d/server.cnf'
 sed -i -e "$(grep 'systemctl enable mariadb.service' -n misp.install.sh | cut -d : -f 1)i $CHANGE_DB_CHARSET_TO_UTF8" misp.install.sh
