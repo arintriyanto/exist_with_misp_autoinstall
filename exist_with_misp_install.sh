@@ -6,8 +6,8 @@
 #
 ################################################################
 # Dwonload install script
-wget https://raw.githubusercontent.com/vodkappa/misp-install-centos-7/master/misp.install.sh
-wget https://raw.githubusercontent.com/vodkappa/misp-install-centos-7/master/misp.variables.sh
+#wget https://raw.githubusercontent.com/vodkappa/misp-install-centos-7/master/misp.install.sh
+#wget https://raw.githubusercontent.com/vodkappa/misp-install-centos-7/master/misp.variables.sh
 
 # hostnamectl comment out
 sed -i -e "s/hostnamectl/#hostnamectl/" misp.install.sh
