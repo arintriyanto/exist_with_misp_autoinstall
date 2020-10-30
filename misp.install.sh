@@ -126,10 +126,17 @@ sudo -u apache $RUN_PHP "php composer.phar config vendor-dir Vendor"
 sudo -u apache $RUN_PHP "php composer.phar install"
 
 # CakeResque normally uses phpredis to connect to redis, but it has a (buggy) fallback connector through Redisent. It is highly advised to install phpredis using "yum install php-redis"
-$RUN_PHP "pecl install redis-2.2.8"
+$RUN_PHP "pecl channel-update pecl.php.net"
+#$RUN_PHP "pecl install redis-2.2.8"
+$RUN_PHP 'yes no|pecl install redis'
 echo "extension=redis.so" | tee /etc/opt/rh/rh-php56/php-fpm.d/redis.ini
 ln -s ../php-fpm.d/redis.ini /etc/opt/rh/rh-php56/php.d/99-redis.ini
 systemctl restart rh-php56-php-fpm.service
+
+sudo ln -s /usr/lib64/libfuzzy.so /usr/lib/libfuzzy.so
+$RUN_PHP 'pecl install ssdeep'
+echo "extension=ssdeep.so" |sudo tee /etc/opt/rh/rh-php72/php.d/99-ssdeep.ini
+
 
 # If you have not yet set a timezone in php.ini
 echo 'date.timezone = "Europe/London"' | tee /etc/opt/rh/rh-php56/php-fpm.d/timezone.ini
